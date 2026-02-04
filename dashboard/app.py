@@ -1,13 +1,15 @@
-
-
 import streamlit as st
 import plotly.express as px
 import os
 import sys
 import pandas as pd
 
+# 1. Dynamically locate the project root and data file
+# This ensures it works on Render's Linux environment
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.abspath(os.path.join(current_dir, ".."))
+default_log_path = os.path.join(root_path, "backend", "log_generator", "realtime_logs.csv")
 
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if root_path not in sys.path:
     sys.path.insert(0, root_path)
 
@@ -25,35 +27,28 @@ st.title("Python Based High Throughput Log Analytics Monitoring Engine")
 
 # Sidebar Settings
 st.sidebar.header("Settings")
-log_file_path = st.sidebar.text_input("Log File Path", value="../backend/log_generator/realtime_logs.csv")
-
+# Using the dynamic path as the default value
+log_file_path = st.sidebar.text_input("Log File Path", value=default_log_path)
 
 if st.sidebar.button("Refresh Dashboard"):
     st.rerun()
 
-
 try:
-    
     log_df_dask = build_pipeline(log_file_path)
-    
     log_data = log_df_dask.compute() 
 
-    
     result = detect_anomaly(log_df_dask)
 
-    
     if hasattr(result, 'compute'):
         anomaly_df = result.compute()
     else:
         anomaly_df = result
 
     # --- VISUALIZATIONS ---
-
     col1, col2 = st.columns(2)
 
     with col1:
         st.subheader("Log Level Distribution")
-        
         if not log_data.empty:
             level_counts = log_data['level'].value_counts().reset_index()
             level_counts.columns = ['level', 'count']
@@ -71,9 +66,7 @@ try:
 
     with col2:
         st.subheader("Log Levels Over Time")
-        
         if not log_data.empty:
-            
             fig_time = px.line(
                 log_data.sort_values("timestamp"), 
                 x="timestamp", 
@@ -89,7 +82,6 @@ try:
     error_logs_count = len(log_data[log_data['level'] == 'ERROR'])
     error_percentage = (error_logs_count / total_logs) * 100 if total_logs > 0 else 0
 
-# Updated Status Message Logic
     if not anomaly_df.empty or error_percentage > 90:
         st.error(f"ALERT: Critical Issues Detected!")
         if error_percentage > 90:
