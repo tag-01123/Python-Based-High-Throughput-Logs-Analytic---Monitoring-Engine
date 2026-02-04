@@ -1,4 +1,6 @@
 dask[dataframe]
 dask[distributed]
 pandas
+streamlit
+plotly
 secure-smtplib
