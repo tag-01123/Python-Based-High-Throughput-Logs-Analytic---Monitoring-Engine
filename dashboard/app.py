@@ -33,7 +33,7 @@ st.title("Python Based High Throughput Log Analytics Monitoring Engine")
 st.sidebar.header("Settings")
 log_file_path = st.sidebar.text_input(
     "Log File Path",
-    value="../backend/log_generator/realtime_logs.csv"
+    value="backend/log_generator/realtime_logs.csv"
 )
 
 if st.sidebar.button("Refresh Dashboard"):
@@ -157,3 +157,4 @@ except FileNotFoundError:
     st.error("Log file not found")
 except Exception as e:
     st.error(f"Error : {e}")
+
