@@ -7,7 +7,10 @@ import sys
 # ---------------------------------------------------
 # PATH SETUP
 # ---------------------------------------------------
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+current_script_path = os.path.dirname(os.path.abspath(__file__))
+
+# Define the root of your project (one level up from dashboard)
+root_path = os.path.abspath(os.path.join(current_script_path, ".."))
 if root_path not in sys.path:
     sys.path.insert(0, root_path)
 
