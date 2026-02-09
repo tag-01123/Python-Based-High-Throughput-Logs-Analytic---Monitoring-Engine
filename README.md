@@ -1,20 +1,12 @@
-🚀 Project Overview
-Software systems generate large volumes of logs that help engineers:
-
-Monitor system health
-Detect anomalies
-Debug failures
-Analyze performance trends
-This project implements a lightweight end-to-end pipeline that:
-
-Generates realistic logs
-Processes and aggregates them
-Stores structured output
-Visualizes results via an interactive dashboard
-✨ Features
-Real-time log simulation
-High-throughput log ingestion
-Structured CSV output
-Backend processing modules
-Interactive Streamlit dashboard
-Modular, extendable architecture
+   📊 Python-Based High Throughput Log Analytics Monitoring Engine
+A scalable log analytics and anomaly detection system built using Python, Dask, Streamlit, and Plotly.
+This project analyzes large volumes of log data,
+detects abnormal error patterns using Z-Score, and 
+visualizes insights through an interactive dashboard.
+   🚀 Features:
+⚡ High-throughput log processing using Dask
+📈 Interactive dashboard built with Streamlit
+🚨 Anomaly detection using statistical Z-Score
+📊 Visual analytics using Plotly
+📬 Email alerts for detected anomalies
+🧩 Modular and scalable architecture
