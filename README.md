@@ -1,7 +1,3 @@
-## 🏆 Internship Project
-
-This project was developed as part of the **Infosys Springboard Virtual Internship 6.0**.
-
 # 📊 Python-Based High Throughput Log Analytics Monitoring Engine
 
 A scalable log analytics and anomaly detection system built using *Python, Dask, Streamlit, and Plotly*.  
@@ -19,4 +15,10 @@ Visualizes insights through an interactive dashboard.
 - 📊 Visual analytics using *Plotly*
 - 📬 Email alerts for detected anomalies
 - 🧩 Modular and scalable architecture
+
+## 🏆 Internship Project
+
+This project was developed as part of the **Infosys Springboard Virtual Internship 6.0**.
+
+
 <img width="749" height="531" alt="image" src="https://github.com/user-attachments/assets/2ae86dab-2228-4248-9c8e-b9bd3b7dedd3" />
